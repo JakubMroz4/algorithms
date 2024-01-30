@@ -54,4 +54,7 @@ def max_heapify(array, root_index, heap_size):
         max_heapify(array, largest, heap_size)
 
 
-print(heap_sort(input_list))
+if __name__ == "__main__":
+    input_list = [12, 11, 7, 2, 20, 36, 13, 5, 6]
+    sorted = heap_sort(input_list)
+    print(sorted)

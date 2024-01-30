@@ -1,7 +1,5 @@
 # quick sort with pivot around last element
 
-input_list = [12, 11, 7, 2, 20, 36, 13, 5, 6]
-
 def quick_sort_inner(array, low, high):
   if low < high:
     pivot = partition(array, low, high)
@@ -37,5 +35,8 @@ def partition(array, low, high):
 def quick_sort(array):
     quick_sort_inner(array, 0, len(array)-1)
 
-quick_sort(input_list)
-print(input_list)
+
+if __name__ == "__main__":
+    input_list = [12, 11, 7, 2, 20, 36, 13, 5, 6]
+    sorted = quick_sort(input_list)
+    print(sorted)

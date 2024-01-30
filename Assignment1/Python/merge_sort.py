@@ -39,4 +39,8 @@ def merge_sort(input):
 
     return result
 
-print(merge_sort(input_list))
+
+if __name__ == "__main__":
+    input_list = [12, 11, 7, 2, 20, 36, 13, 5, 6]
+    sorted = merge_sort(input_list)
+    print(sorted)
