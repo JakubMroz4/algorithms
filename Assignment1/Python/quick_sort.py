@@ -39,4 +39,4 @@ def quick_sort(array):
 if __name__ == "__main__":
     input_list = [12, 11, 7, 2, 20, 36, 13, 5, 6]
     sorted = quick_sort(input_list)
-    print(sorted)
+    print(input_list)
