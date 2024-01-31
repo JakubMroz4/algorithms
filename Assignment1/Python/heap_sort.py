@@ -18,23 +18,28 @@ def right_h(index):
 
 
 def heap_sort(array):
+    steps = 0
     heap_size = len(array)
-
-    build_max_heap(array)
+    steps_build_heap = build_max_heap(array)
+    steps += 2 + steps_build_heap
 
     for i in range(heap_size - 1, 0, -1):
         array[0], array[i] = array[i], array[0]
-        max_heapify(array, 0, i)
+        steps_heapify = max_heapify(array, 0, i)
+        steps += 2 + steps_heapify
 
-    return array
+    return array, steps
 
 
 def build_max_heap(array):
     heap_size = len(array)
+    steps = 1
 
-    for i in reversed(range(1, math.floor(len(array)/2))):
-        max_heapify(array, i, heap_size)
-        # print(i)
+    for i in reversed(range(-1, len(array)//2)):
+        steps_heapify = max_heapify(array, i, heap_size)
+        steps += 1 + steps_heapify
+
+    return steps
 
 
 def max_heapify(array, root_index, heap_size):
@@ -42,19 +47,26 @@ def max_heapify(array, root_index, heap_size):
 
     left = left_h(root_index)
     right = right_h(root_index)
+    steps = 3
 
     if left < heap_size and array[left] > array[largest]:
         largest = left
+        steps += 1
 
     if right < heap_size and array[right] > array[largest]:
         largest = right
+        steps += 1
 
     if largest != root_index:
         array[root_index], array[largest] = array[largest], array[root_index]
-        max_heapify(array, largest, heap_size)
+        steps_heapify = max_heapify(array, largest, heap_size)
+        steps += 2 + steps_heapify
+
+    return steps
 
 
 if __name__ == "__main__":
     input_list = [12, 11, 7, 2, 20, 36, 13, 5, 6]
-    sorted = heap_sort(input_list)
+    sorted, steps = heap_sort(input_list)
     print(sorted)
+    print(steps)
