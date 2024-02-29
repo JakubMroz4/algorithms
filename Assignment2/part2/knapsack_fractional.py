@@ -1,8 +1,9 @@
 
 class Item:
-    def __init__(self, value, weight):
+    def __init__(self, value, weight, id):
         self.value = value
         self.weight = weight
+        self.id = id
 
     def ratio(self):
         return self.value / self.weight
@@ -24,12 +25,12 @@ def fractional_knapsack(items: list, capacity: int):
         if item.weight <= capacity:
             capacity -= item.weight
             max_value += item.value
-            solution_items.append(index + 1)
+            solution_items.append(item.id)
 
         # else add fraction of it
         else:
             max_value += item.value * capacity / item.weight
-            solution_items.append(index + 1)
+            solution_items.append(item.id)
             break
             
     return max_value, solution_items
@@ -40,7 +41,7 @@ def input_wrapper(weight_list, value_list, capacity):
 
     items = []
     for x in range(len(weight_list)):
-        items.append(Item(value_list[x], weight_list[x]))
+        items.append(Item(value_list[x], weight_list[x], x + 1))
 
     solution, solution_items_list = fractional_knapsack(items, capacity)
 
@@ -51,7 +52,7 @@ def input_wrapper(weight_list, value_list, capacity):
 
 if __name__ == "__main__":
     capacity = 100
-    items = [Item(120, 20), Item(200, 40), Item(240, 60)]
+    items = [Item(120, 200, 1), Item(120, 20, 2), Item(200, 40, 3), Item(240, 60, 4), Item(70, 10, 5)]
 
     solution, solution_items_list = fractional_knapsack(items, capacity)
 
