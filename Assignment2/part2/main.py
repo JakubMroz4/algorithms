@@ -38,6 +38,7 @@ def knapsack_program_user():
 
 def knapsack_program(weights: list, values: list, capacity: int, amount: int):
     print("Item indexes start with 1")
+    print(f"Capacity: {capacity}")
 
     for x in range(amount):
         shuffle(weights)
